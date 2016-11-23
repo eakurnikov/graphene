@@ -2,19 +2,19 @@
 
 using namespace std;
 
-// Вычисляет квадрат
+// Р’С‹С‡РёСЃР»СЏРµС‚ РєРІР°РґСЂР°С‚
 double Square(double const x)
 {
   return x*x;
 }
 
-// Сравнивает 2 числа с учетом погрешности
+// РЎСЂР°РІРЅРёРІР°РµС‚ 2 С‡РёСЃР»Р° СЃ СѓС‡РµС‚РѕРј РїРѕРіСЂРµС€РЅРѕСЃС‚Рё
 bool EqualsWithEps(double const a, double const b)
 {
   return (abs(a - b) < kEps) ? true : false;
 }
 
-// Скалярное произведение 2-х векторов
+// РЎРєР°Р»СЏСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ 2-С… РІРµРєС‚РѕСЂРѕРІ
 double Scalar(vector<double> const & X, vector<double> const & Y)
 {
   double result = 0;
@@ -29,14 +29,14 @@ double Scalar(vector<double> const & X, vector<double> const & Y)
   return result;
 }
 
-// Заполняет массив единицами
+// Р—Р°РїРѕР»РЅСЏРµС‚ РјР°СЃСЃРёРІ РµРґРёРЅРёС†Р°РјРё
 void Ones(vector<double> & X)
 {
   for (int i = 0; i < X.size(); i++)
     X[i] = 1;
 }
 
-// МНК возвращает k
+// РњРќРљ РІРѕР·РІСЂР°С‰Р°РµС‚ k
 double OLS(vector<double> const & X, vector<double> const & Y)
 {
   if (X.size() != Y.size())
@@ -60,7 +60,7 @@ double OLS(vector<double> const & X, vector<double> const & Y)
   return k;
 }
 
-// Флаг, определяющий остановку выполнения цикла
+// Р¤Р»Р°Рі, РѕРїСЂРµРґРµР»СЏСЋС‰РёР№ РѕСЃС‚Р°РЅРѕРІРєСѓ РІС‹РїРѕР»РЅРµРЅРёСЏ С†РёРєР»Р°
 bool Flag(vector<vector<double>> const & array)
 {
   bool res = true;
