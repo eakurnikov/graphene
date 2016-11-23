@@ -9,25 +9,25 @@
 
 using namespace std;
 
-// Вычисляет квадрат
+// Р’С‹С‡РёСЃР»СЏРµС‚ РєРІР°РґСЂР°С‚
 double Square(double const x);
 
-// Сравнивает 2 числа с учетом погрешности
+// РЎСЂР°РІРЅРёРІР°РµС‚ 2 С‡РёСЃР»Р° СЃ СѓС‡РµС‚РѕРј РїРѕРіСЂРµС€РЅРѕСЃС‚Рё
 bool EqualsWithEps(double const a, double const b);
 
-// Скалярное произведение 2-х векторов
+// РЎРєР°Р»СЏСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ 2-С… РІРµРєС‚РѕСЂРѕРІ
 double Scalar(vector<double> const & X, vector<double> const & Y);
 
-// Заполняет вектор единицами
+// Р—Р°РїРѕР»РЅСЏРµС‚ РІРµРєС‚РѕСЂ РµРґРёРЅРёС†Р°РјРё
 void Ones(vector<double> & X);
 
-// МНК возвращает k
+// РњРќРљ РІРѕР·РІСЂР°С‰Р°РµС‚ k
 double OLS(vector<double> const & X, vector<double> const & Y);
 
-// Флаг, определяющий остановку выполнения цикла
+// Р¤Р»Р°Рі, РѕРїСЂРµРґРµР»СЏСЋС‰РёР№ РѕСЃС‚Р°РЅРѕРІРєСѓ РІС‹РїРѕР»РЅРµРЅРёСЏ С†РёРєР»Р°
 bool Flag(vector<vector<double>> const & array);
 
-// Метод для печати двумерного вектора int
+// РњРµС‚РѕРґ РґР»СЏ РїРµС‡Р°С‚Рё РґРІСѓРјРµСЂРЅРѕРіРѕ РІРµРєС‚РѕСЂР° int
 template <typename T> void Print(string const & s, vector<vector<T>> const & vv)
 {
   cout << s << endl;
@@ -39,7 +39,7 @@ template <typename T> void Print(string const & s, vector<vector<T>> const & vv)
   }
 }
 
-// Метод для печати одномерного вектора
+// РњРµС‚РѕРґ РґР»СЏ РїРµС‡Р°С‚Рё РѕРґРЅРѕРјРµСЂРЅРѕРіРѕ РІРµРєС‚РѕСЂР°
 template <typename T> void Print(string const & s, vector<T> const & v)
 {
   cout << s << endl;
