@@ -8,7 +8,7 @@
 
 using namespace std;
 
-// Чтение координат из файла
+// Р§С‚РµРЅРёРµ РєРѕРѕСЂРґРёРЅР°С‚ РёР· С„Р°Р№Р»Р°
 vector<Atom> FileToVector(string const & filename)
 {
   vector<Atom> atoms;
