@@ -8,38 +8,39 @@ class Atom
 {
 
 private:
-  // Атом - это 3 координаты + тип
+  // РђС‚РѕРј - СЌС‚Рѕ 3 РєРѕРѕСЂРґРёРЅР°С‚С‹ + С‚РёРї
   double m_x, m_y, m_z;
   char m_type;
 
 public:
-  // Конструктор
+  // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
   Atom(double const x, double const y, double const z, char const type);
 
-  // Конструктор копирования
+  // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
   Atom(Atom const & atom);
 
-  // Сеттеры
+  // РЎРµС‚С‚РµСЂС‹
   void setX(double const x);
   void setY(double const y);
   void setZ(double const z);
   void setType(char const type);
 
-  // Геттеры
+  // Р“РµС‚С‚РµСЂС‹
   double const & getX() const;
   double const & getY() const;
   double const & getZ() const;
   char const & getType() const;
 
-  // Оператор присваивания
+  // РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
   Atom & operator = (Atom const & atom);
 
-  // Дополнительные методы
+  // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹
   void plusX(double const x);
   void plusY(double const y);
   void plusZ(double const z);
 };
 
-// Оператор вывода в поток
+// РћРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР° РІ РїРѕС‚РѕРє
 ostream & operator << (ostream & os, Atom const & atom);
+
 
