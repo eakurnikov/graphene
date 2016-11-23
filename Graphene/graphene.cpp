@@ -1,19 +1,19 @@
 #include "graphene.hpp"
 #include "constants.hpp"
 
-// Конструктор графена на основе вектора, состоящего из атомов
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РіСЂР°С„РµРЅР° РЅР° РѕСЃРЅРѕРІРµ РІРµРєС‚РѕСЂР°, СЃРѕСЃС‚РѕСЏС‰РµРіРѕ РёР· Р°С‚РѕРјРѕРІ
 Graphene::Graphene(vector<Atom> const atoms)
   : m_atoms(atoms)
 {
   CreateMat();
 }
 
-// Конструктор копирования
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 Graphene::Graphene(Graphene const & graphene)
   : m_mat(graphene.getMat()), m_atoms(graphene.getAtoms())
 {}
 
-// Конструктор графена, смещающий i атом графена на dx вдоль направления x (n=0), y (n=1), z (n=2)
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РіСЂР°С„РµРЅР°, СЃРјРµС‰Р°СЋС‰РёР№ i Р°С‚РѕРј РіСЂР°С„РµРЅР° РЅР° dx РІРґРѕР»СЊ РЅР°РїСЂР°РІР»РµРЅРёСЏ x (n=0), y (n=1), z (n=2)
 Graphene::Graphene(Graphene graphene, int const k, int const n, double const dx)
   : m_mat(graphene.getMat()), m_atoms(graphene.getAtoms())
 {
@@ -34,20 +34,20 @@ Graphene::Graphene(Graphene graphene, int const k, int const n, double const dx)
   }
 }
 
-// Геттеры
+// Р“РµС‚С‚РµСЂС‹
 vector<Atom> const & Graphene::getAtoms() const { return m_atoms; }
 vector<vector<int>> const & Graphene::getMat() const { return m_mat; }
 int const Graphene::getN() const { return m_atoms.size(); }
 
-// Сеттеры
+// РЎРµС‚С‚РµСЂС‹
 void Graphene::setAtom(int const index, double const x, double const y, double const z)
 {
   m_atoms[index] = Atom(x, y, z, m_atoms[index].getType());
 }
 
-// Основные мотоды
+// РћСЃРЅРѕРІРЅС‹Рµ РјРѕС‚РѕРґС‹
 
-// Создание матрицы связей
+// РЎРѕР·РґР°РЅРёРµ РјР°С‚СЂРёС†С‹ СЃРІСЏР·РµР№
 void Graphene::CreateMat()
 {
   vector<vector<int>> mat(getN(), vector<int>(3, 0));
@@ -68,7 +68,7 @@ void Graphene::CreateMat()
   m_mat = mat;
 }
 
-// Возвращает расстояние между i и j атомами
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ i Рё j Р°С‚РѕРјР°РјРё
 double Graphene::R(int const i, int const j) const
 {
   return (sqrt(Square(m_atoms[i].getX() - m_atoms[j].getX())
@@ -76,13 +76,13 @@ double Graphene::R(int const i, int const j) const
     + Square(m_atoms[i].getZ() - m_atoms[j].getZ())));
 }
 
-// Возращает угол ijk, j - центральный атом
+// Р’РѕР·СЂР°С‰Р°РµС‚ СѓРіРѕР» ijk, j - С†РµРЅС‚СЂР°Р»СЊРЅС‹Р№ Р°С‚РѕРј
 double Graphene::ANG(int const i, int const j, int const k) const
 {
   return (180.0 / PI * acos((R(i, j) * R(i, j) + R(j, k) * R(j, k) - R(i, k) * R(i, k)) / (2 * R(i, j) * R(j, k))));
 }
 
-// Минимальная координату по x в графене
+// РњРёРЅРёРјР°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Сѓ РїРѕ x РІ РіСЂР°С„РµРЅРµ
 double Graphene::minX() const
 {
   double minX = MAXR;
@@ -93,7 +93,7 @@ double Graphene::minX() const
   return minX;
 }
 
-// Максимальная координата по x в графене
+// РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° РїРѕ x РІ РіСЂР°С„РµРЅРµ
 double Graphene::maxX() const
 {
   double maxX = -MAXR;
@@ -104,8 +104,8 @@ double Graphene::maxX() const
   return maxX;
 }
 
-// Список номеров атомов, у которых максимальна и минимальна координата x
-// Т.е. те атомы, которые мы будем растягивать
+// РЎРїРёСЃРѕРє РЅРѕРјРµСЂРѕРІ Р°С‚РѕРјРѕРІ, Сѓ РєРѕС‚РѕСЂС‹С… РјР°РєСЃРёРјР°Р»СЊРЅР° Рё РјРёРЅРёРјР°Р»СЊРЅР° РєРѕРѕСЂРґРёРЅР°С‚Р° x
+// Рў.Рµ. С‚Рµ Р°С‚РѕРјС‹, РєРѕС‚РѕСЂС‹Рµ РјС‹ Р±СѓРґРµРј СЂР°СЃС‚СЏРіРёРІР°С‚СЊ
 vector<double> Graphene::Out() const
 {
   vector<double> result(getN());
@@ -121,7 +121,7 @@ vector<double> Graphene::Out() const
   return result;
 }
 
-// Энергия, зависящая от растояний между соседними атомами
+// Р­РЅРµСЂРіРёСЏ, Р·Р°РІРёСЃСЏС‰Р°СЏ РѕС‚ СЂР°СЃС‚РѕСЏРЅРёР№ РјРµР¶РґСѓ СЃРѕСЃРµРґРЅРёРјРё Р°С‚РѕРјР°РјРё
 double Graphene::Energy1() const
 {
   double U = 0;
@@ -134,7 +134,7 @@ double Graphene::Energy1() const
   return U;
 }
 
-// Энергия, зависящая от углов
+// Р­РЅРµСЂРіРёСЏ, Р·Р°РІРёСЃСЏС‰Р°СЏ РѕС‚ СѓРіР»РѕРІ
 double Graphene::Energy2() const
 {
   double U = 0;
@@ -151,26 +151,26 @@ double Graphene::Energy2() const
   return U;
 }
 
-// Полная энергия
+// РџРѕР»РЅР°СЏ СЌРЅРµСЂРіРёСЏ
 double Graphene::Energy() const
 {
   return Energy1() + Energy2();
 }
 
-// Вычиление производной от энергии k - номер атома, который смещается на dx вдоль оси x (n=0), y (n=1), z (n=2)
+// Р’С‹С‡РёР»РµРЅРёРµ РїСЂРѕРёР·РІРѕРґРЅРѕР№ РѕС‚ СЌРЅРµСЂРіРёРё k - РЅРѕРјРµСЂ Р°С‚РѕРјР°, РєРѕС‚РѕСЂС‹Р№ СЃРјРµС‰Р°РµС‚СЃСЏ РЅР° dx РІРґРѕР»СЊ РѕСЃРё x (n=0), y (n=1), z (n=2)
 double Graphene::EnergyDerivative(int const k, int const n, double const dx) const
 {
-  // Старая энергия
+  // РЎС‚Р°СЂР°СЏ СЌРЅРµСЂРіРёСЏ
   double E1 = Energy();
 
-  // Задаем новую энергию со смещением k-го атома на dx
+  // Р—Р°РґР°РµРј РЅРѕРІСѓСЋ СЌРЅРµСЂРіРёСЋ СЃРѕ СЃРјРµС‰РµРЅРёРµРј k-РіРѕ Р°С‚РѕРјР° РЅР° dx
   Graphene graphene_temp(*this, k, n, dx);
   double E2 = graphene_temp.Energy();
 
   return (E2 - E1) / dx;
 }
 
-// Оператор вывода в поток
+// РћРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР° РІ РїРѕС‚РѕРє
 ostream & operator << (ostream & os, Graphene const & graphene)
 {
   os << "Graphene {" << graphene.getN() << "}" << endl;
